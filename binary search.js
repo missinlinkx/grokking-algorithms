@@ -4,8 +4,7 @@ var doneSearching = false;
 
 function getNumber () {
   console.log('Enter number between 1-1000:');
-  process.stdin.resume();
-  process.stdin.setEncoding('utf8');
+  process.stdin.resume().setEncoding('utf8');
   process.stdin.on('data', function (text) {
     n = Number(text.trim());
     if (n !== NaN) {
