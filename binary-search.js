@@ -43,4 +43,5 @@ function binarySearch (arr, num) {
   doneSearching = true;
 };
 
+console.log('Enter number between 1-1000:');
 prompt(getNumber);
