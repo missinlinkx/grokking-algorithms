@@ -78,7 +78,37 @@ function search () {
       }
     }
     if (!found) {
-      console.log('value not found');
+      console.log('Value not found');
+    }
+  }
+}
+
+function remove () {
+  var val = prompt ("Enter value to delete: ")
+  var deleted = false;
+  if (val) {
+    var idx = numeric(val);
+
+    if (array[idx] !== undefined) {
+      var current = array[idx];
+      if (array[idx].value === val) {
+        array[idx] = array[idx].next;
+        deleted = true;
+      } else {
+        while (current) {
+          if (current.next && current.next.value === val) {
+            current.next = current.next.next;
+            deleted = true;
+            break;
+          } else {
+            current = current.next;
+          }
+        }
+      }
+      if (!deleted) {
+        console.log("value not found");
+      }
+      printArray();
     }
   }
 }
@@ -97,3 +127,4 @@ if (!reading) {
     }
   }
 }
+remove();
