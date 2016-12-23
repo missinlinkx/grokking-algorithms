@@ -63,32 +63,30 @@ function search () {
   var val = prompt ("Enter value to search for: ")
   if (val) {
     var found = false;
-    for (var i = 0; i < hashsize; i++) {
-      if (array[i] !== undefined) {
-        var current = array[i];
-        while(current) {
-          if (current.value === val) {
-            console.log(val+" found at idx "+i);
-            found = true;
-            break;
-          } else {
-            current = current.next;
-          }
+    var idx = numeric(val);
+    if (array[idx] !== undefined) {
+      var current = array[idx];
+      while(current) {
+        if (current.value === val) {
+          console.log(val+" found at idx "+idx);
+          found = true;
+          break;
+        } else {
+          current = current.next;
         }
       }
     }
-    if (!found) {
-      console.log('Value not found');
-    }
+  }
+  if (!found) {
+    console.log('Value not found');
   }
 }
 
-function remove () {
+function del () {
   var val = prompt ("Enter value to delete: ")
   var deleted = false;
   if (val) {
     var idx = numeric(val);
-
     if (array[idx] !== undefined) {
       var current = array[idx];
       if (array[idx].value === val) {
@@ -113,18 +111,25 @@ function remove () {
   }
 }
 
-read();
-if (!reading) {
-  var searching = true;
-  while (searching) {
-    var src = prompt('Search for a value? Y/N ');
-    while (src === 'Y' || src === 'y') {
-      search();
-      src = prompt('Search for another value? Y/N ');
+function run () {
+  var choice = prompt('Add values (A), Search for a value (S), or Delete value (D)? ');
+  while (choice) {
+    if (choice === 'A' || choice === 'a') {
+      read();
+      choice = prompt('Add values (A), Search for a value (S), or Delete value (D)? ');
     }
-    if (src !== 'Y' || src !== 'y') {
-      searching = false;
+    else if (choice === 'S' || choice === 's') {
+      search();
+      choice = prompt('Add values (A), Search for a value (S), or Delete value (D)? ');
+    }
+    else if (choice === 'D' || choice === 'd') {
+      del();
+      choice = prompt('Add values (A), Search for a value (S), or Delete value (D)? ');
+    }
+    else {
+      break;
     }
   }
 }
-remove();
+
+run();
