@@ -1,6 +1,6 @@
 var fs = require('fs');
-var str1 = "art"
-var str2 = "magic"
+var str1 = "art";
+var str2 = "magic";
 
 function levsDist (str1, str2) {
   if (str1===str2) {
