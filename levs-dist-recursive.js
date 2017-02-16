@@ -27,7 +27,6 @@ $(document).ready(function () {
       len1 = str1.length;
       str2 = $('#str2').val();
       len2 = str2.length;
-      $('#derp').text(str1+len1);
       $('label').text("Lev's distance between " +$('#str1').val()+" and "+$('#str2').val()+" is:")
       var dist = levsDist(str1,len1,str2,len2);
       $('#distance').text(+dist);
